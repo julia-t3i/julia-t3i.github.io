@@ -1,0 +1,279 @@
+/* Importing Google font - Quicksand */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+body {
+  font-family: "Quicksand", sans-serif;
+}
+
+/* <weight>: Use a value from 300 to 700 */
+/* <uniquifier>: Use a unique and descriptive class name */
+
+.quicksand-regular {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  height: 100vh;
+  background: url("background.png");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #000000;
+   /* Add top padding equal to header height so page content appears below the fixed nav */
+  padding-top: 80px;
+  overflow-x: hidden;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+header .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+}
+
+.navbar .logo {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-left: 30px;
+}
+
+
+
+.navbar .menu-links {
+  display: flex;
+  gap: 80px;
+  margin-left: auto;
+  list-style: none;
+}
+
+.navbar a{
+  color: #ffffff;
+  text-decoration: none;
+  transition: 0.2s ease;
+  font-size: 1.4rem;
+}
+
+.navbar a:hover {
+  color: #fccc2d;
+}
+
+/* Home Section Styling */
+.home {
+  display: flex;
+  /* Reduce section height by header height so layout doesn't jump underneath the fixed nav */
+  height: calc(100vh - 80px);
+  color: #ffffff;
+  min-height: 500px;
+  align-items: center;
+}
+
+.home .max-width {
+  margin: auto 0 auto 40px;
+}
+
+.home .home-content .text-1 {
+  font-size: 32px;
+}
+.home .home-content .text-2 {
+  font-size: 95px;
+  font-weight: 600;
+  margin-left: -10px;
+}
+.home .home-content .text-3 {
+  font-size: 50px;
+  margin: 5px 0;
+  margin-left: -3px;
+}
+.home .home-content .text-3 span {
+  color: #fccc2d;
+  font-weight: 600;
+}
+
+/* Blinking cursor */
+.typing::after {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 0.8em;
+  background-color: #fccc2d;
+  margin-left: 2px;
+  position: relative;
+  top: 4px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Responsive and navigation styles */
+/* Hamburger button (hidden on wide screens) */
+.hamburger {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 12px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #ffffff;
+  margin:5px 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Mobile menu (hidden by default on small screens) */
+.menu-links.active {
+  display: flex;
+}
+
+/* Make layout adapt on medium/ narrower screens */
+@media (max-width: 900px) {
+  header .navbar { padding: 0 16px; }
+  .navbar .menu-links { gap: 20px; }
+  .home .max-width { margin-left: 20px; }
+  .home .home-content .text-2 { font-size: 4.5rem; }
+  .home .home-content .text-3 { font-size: 1.6rem; }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .navbar .menu-links { display: none; }
+  .hamburger { display: inline-block; }
+  .navbar { align-items: center; }
+  .navbar .logo { font-size: 1.6rem; margin-left: -20px; }
+  /* Move content higher and increase text size on small phones */
+  .home { align-items: flex-start; padding: 0px 16px; min-height: 70vh;}
+  .home .max-width { margin: 0px 0 0 40px; text-align: left; }
+  .home .home-content .text-2 { font-size: 3rem; margin-left: -50px; line-height: 1; }
+  .home .home-content .text-3 { font-size: 1.4rem; margin-left: -43px; }
+  .home .home-content .text-1 { margin-left: -40px; margin-top: 350px; }
+  .typing::after { height: 0.95em; top: 4px; }
+
+  /* Shift background to the right so the face is visible on narrow screens */
+  body { background-position: 64% center; }
+
+  /* Mobile menu panel styles */
+  .menu-links {
+    position: absolute;
+    right: 16px;
+    top: 70px;
+    background: rgba(0,0,0,0.7);
+    padding: 12px 18px;
+    border-radius: 8px;
+    flex-direction: column;
+    gap: 12px;
+    display: none;
+    z-index: 999;
+  }
+  .menu-links a { padding: 6px 0; }
+}
+
+/* Projects Section Styling */
+.projects {
+  background-color: #af0c0c;
+  color: #ffffff;
+  padding: 80px 40px;
+  /* position this section up under the fixed header so its red background shows behind the nav */
+  position: relative;
+  top: -80px;
+  padding-top: 160px;
+  /* make this section span the full viewport width to cover the background image on the sides */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
+  min-height: calc(100vh + 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 0;
+}
+
+.projects h1 {
+  font-size: 3rem;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.projects-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+}
+
+.project-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.project-box .box {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.project-box .box:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.project-box p {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Link styles for clickable project boxes */
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+/* Project detail page styles */
+.project-detail {
+  padding: 120px 20px 60px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #ffffff;
+}
+.project-detail h1 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
+.project-detail .hero {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+.project-detail p { color: #ffffff; line-height: 1.6; }
+.back-link { display: inline-block; margin-top: 20px; color: #fff; text-decoration: underline; }
