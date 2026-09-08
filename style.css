@@ -25,6 +25,24 @@ body {
    /* Add top padding equal to header height so page content appears below the fixed nav */
   padding-top: 80px;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Apply brightness filter to body/home page background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("background.png");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: brightness(0.85);
+  z-index: -1;
+  pointer-events: none;
 }
 
 header {
@@ -34,6 +52,7 @@ header {
   width: 100%;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
 }
 
 header .navbar {
@@ -191,7 +210,6 @@ header .navbar {
 
 /* Projects Section Styling */
 .projects {
-  background-color: #af0c0c;
   color: #ffffff;
   padding: 80px 40px;
   /* position this section up under the fixed header so its red background shows behind the nav */
@@ -207,7 +225,23 @@ header .navbar {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  z-index: 0;
+  z-index: 1;
+}
+
+/* Fixed red background that stays in place when scrolling - like the PNG does */
+.projects::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("background.png");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: blur(3px) brightness(0.5);
+  z-index: -1;
 }
 
 .projects h1 {
@@ -277,3 +311,437 @@ header .navbar {
 }
 .project-detail p { color: #ffffff; line-height: 1.6; }
 .back-link { display: inline-block; margin-top: 20px; color: #fff; text-decoration: underline; }
+
+/* ===== PORTFOLIO SECTION STYLING ===== */
+.portfolio {
+  color: #ffffff;
+  padding: 80px 40px;
+  position: relative;
+  top: -80px;
+  padding-top: 160px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
+  min-height: calc(100vh + 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 1;
+}
+
+/* Fixed red background for portfolio (stays in place when scrolling) */
+.portfolio::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("background.png");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: blur(3px) brightness(0.5);
+  z-index: -1;
+}
+
+.portfolio h1 {
+  font-size: 3rem;
+  margin-bottom: 60px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Portfolio category containers */
+.portfolio-category {
+  width: 100%;
+  max-width: 1300px;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-category h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 15px;
+}
+
+/* Gallery grid layout */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+/* Individual gallery items */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  aspect-ratio: 1;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid #ffffff;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Hidden info div for modal data */
+.art-info {
+  display: none;
+}
+
+/* ===== LIGHTBOX MODAL STYLING ===== */
+.lightbox-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.lightbox-modal.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Close button */
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 2001;
+}
+
+.lightbox-close:hover {
+  color: #ffffff;
+}
+
+/* Lightbox image */
+.lightbox-image {
+  max-width: 90%;
+  max-height: 70vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  margin-bottom: 30px;
+}
+
+/* Lightbox info section */
+.lightbox-info {
+  color: #ffffff;
+  text-align: center;
+  max-width: 600px;
+}
+
+.lightbox-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.lightbox-info p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .portfolio {
+    padding: 60px 20px;
+    padding-top: 140px;
+  }
+
+  .portfolio h1 {
+    font-size: 2rem;
+  }
+
+  .portfolio-category h2 {
+    font-size: 1.5rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+  }
+
+  .lightbox-image {
+    max-width: 95%;
+    max-height: 60vh;
+  }
+}
+
+/* ===== CONTACT SECTION STYLING ===== */
+.contact {
+  color: #ffffff;
+  padding: 80px 40px;
+  position: relative;
+  top: -80px;
+  padding-top: 160px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  box-sizing: border-box;
+  min-height: calc(100vh + 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  z-index: 1;
+}
+
+/* Fixed background for contact page (stays in place when scrolling) */
+.contact::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url("background.png");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  filter: blur(3px) brightness(0.5);
+  z-index: -1;
+}
+
+.contact h1 {
+  font-size: 3rem;
+  margin-bottom: 60px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Two-column layout for resume and contact info */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  width: 100%;
+  max-width: 1400px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Resume section - left side on desktop */
+.resume-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.resume-section h2 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* PDF preview container */
+.resume-preview {
+  width: 100%;
+  height: 600px;
+  border: 2px solid #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.resume-preview embed {
+  width: 100%;
+  height: 100%;
+}
+
+/* Download button */
+.download-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #ffffff;
+  color: #af0c0c;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.download-btn:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* Contact info section - right side on desktop */
+.contact-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contact-info-section h2 {
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.contact-info-section h3 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.contact-info-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+}
+
+/* Contact details styling */
+.contact-details {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-left: 3px solid #ffffff;
+  border-radius: 4px;
+}
+
+.contact-details p {
+  margin: 12px 0;
+}
+
+.contact-details a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.contact-details a:hover {
+  color: #e0e0e0;
+  text-decoration: underline;
+}
+
+/* Contact form styling */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 12px;
+  border: 2px solid #ffffff;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #e0e0e0;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.submit-btn {
+  padding: 12px 30px;
+  background-color: #ffffff;
+  color: #af0c0c;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+}
+
+/* Responsive: Stack vertically on mobile */
+@media (max-width: 768px) {
+  .contact {
+    padding: 60px 20px;
+    padding-top: 140px;
+  }
+
+  .contact h1 {
+    font-size: 2rem;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .resume-section,
+  .contact-info-section {
+    width: 100%;
+  }
+
+  .resume-preview {
+    height: 500px;
+  }
+
+  .contact-info-section h2,
+  .resume-section h2 {
+    font-size: 1.5rem;
+  }
+}

@@ -28,12 +28,99 @@
         </nav>
     </header>
 
-    <main class="max-width">
+    <main>
         <section class="portfolio" id="portfolio">
             <h1>Portfolio</h1>
-            <p>Showcase your work here. Replace with images or project cards.</p>
+            
+            <!-- ILLUSTRATIONS CATEGORY -->
+            <div class="portfolio-category">
+                <h2>Illustrations</h2>
+                <div class="gallery-grid">
+                    <!-- EDIT: Replace src with your illustration image path -->
+                    <div class="gallery-item" onclick="openModal(this)">
+                        <img src="placeholder-illustration-1.jpg" alt="Illustration 1">
+                        <!-- ADD: Update the data attributes with your image info -->
+                        <div class="art-info" data-title="Illustration Title 1" data-description="Add your illustration description here."></div>
+                    </div>
+                    <!-- EDIT: Replace src with your illustration image path -->
+                    <div class="gallery-item" onclick="openModal(this)">
+                        <img src="placeholder-illustration-2.jpg" alt="Illustration 2">
+                        <!-- ADD: Update the data attributes with your image info -->
+                        <div class="art-info" data-title="Illustration Title 2" data-description="Add your illustration description here."></div>
+                    </div>
+                    <!-- EDIT: Replace src with your illustration image path -->
+                    <div class="gallery-item" onclick="openModal(this)">
+                        <img src="placeholder-illustration-3.jpg" alt="Illustration 3">
+                        <!-- ADD: Update the data attributes with your image info -->
+                        <div class="art-info" data-title="Illustration Title 3" data-description="Add your illustration description here."></div>
+                    </div>
+                    <!-- EDIT: Add more illustrations by duplicating the gallery-item div above -->
+                </div>
+            </div>
+
+            <!-- GRAPHIC DESIGN CATEGORY -->
+            <div class="portfolio-category">
+                <h2>Graphic Design</h2>
+                <div class="gallery-grid">
+                    <!-- EDIT: Replace src with your graphic design image path -->
+                    <div class="gallery-item" onclick="openModal(this)">
+                        <img src="placeholder-design-1.jpg" alt="Graphic Design 1">
+                        <!-- ADD: Update the data attributes with your image info -->
+                        <div class="art-info" data-title="Design Title 1" data-description="Add your design description here."></div>
+                    </div>
+                    <!-- EDIT: Replace src with your graphic design image path -->
+                    <div class="gallery-item" onclick="openModal(this)">
+                        <img src="placeholder-design-2.jpg" alt="Graphic Design 2">
+                        <!-- ADD: Update the data attributes with your image info -->
+                        <div class="art-info" data-title="Design Title 2" data-description="Add your design description here."></div>
+                    </div>
+                    <!-- EDIT: Replace src with your graphic design image path -->
+                    <div class="gallery-item" onclick="openModal(this)">
+                        <img src="placeholder-design-3.jpg" alt="Graphic Design 3">
+                        <!-- ADD: Update the data attributes with your image info -->
+                        <div class="art-info" data-title="Design Title 3" data-description="Add your design description here."></div>
+                    </div>
+                    <!-- EDIT: Add more designs by duplicating the gallery-item div above -->
+                </div>
+            </div>
+
+            <!-- PHOTOGRAPHY CATEGORY -->
+            <div class="portfolio-category">
+                <h2>Photography</h2>
+                <div class="gallery-grid">
+                    <!-- EDIT: Replace src with your photography image path -->
+                    <div class="gallery-item" onclick="openModal(this)">
+                        <img src="placeholder-photo-1.jpg" alt="Photography 1">
+                        <!-- ADD: Update the data attributes with your image info -->
+                        <div class="art-info" data-title="Photo Title 1" data-description="Add your photography description here."></div>
+                    </div>
+                    <!-- EDIT: Replace src with your photography image path -->
+                    <div class="gallery-item" onclick="openModal(this)">
+                        <img src="placeholder-photo-2.jpg" alt="Photography 2">
+                        <!-- ADD: Update the data attributes with your image info -->
+                        <div class="art-info" data-title="Photo Title 2" data-description="Add your photography description here."></div>
+                    </div>
+                    <!-- EDIT: Replace src with your photography image path -->
+                    <div class="gallery-item" onclick="openModal(this)">
+                        <img src="placeholder-photo-3.jpg" alt="Photography 3">
+                        <!-- ADD: Update the data attributes with your image info -->
+                        <div class="art-info" data-title="Photo Title 3" data-description="Add your photography description here."></div>
+                    </div>
+                    <!-- EDIT: Add more photos by duplicating the gallery-item div above -->
+                </div>
+            </div>
         </section>
     </main>
+
+    <!-- LIGHTBOX MODAL FOR ZOOMED VIEW -->
+    <div id="lightboxModal" class="lightbox-modal" onclick="if(event.target === this) closeModal()">
+        <span class="lightbox-close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" class="lightbox-image" src="" alt="">
+        <div class="lightbox-info">
+            <h3 id="modalTitle"></h3>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
 
 </body>
 </html>

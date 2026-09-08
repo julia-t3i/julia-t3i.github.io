@@ -28,10 +28,55 @@
         </nav>
     </header>
 
-    <main class="max-width">
+    <main>
         <section class="contact" id="contact">
             <h1>Contact</h1>
-            <p>Add your contact form or email here.</p>
+            
+            <div class="contact-container">
+                <!-- RESUME PREVIEW SECTION -->
+                <div class="resume-section">
+                    <h2>My Resume</h2>
+                    <!-- EDIT: Replace "resume.pdf" with your actual resume file path -->
+                    <div class="resume-preview">
+                        <embed src="resume.pdf" type="application/pdf" />
+                    </div>
+                    <!-- EDIT: Update href to download link for your resume -->
+                    <a href="resume.pdf" download class="download-btn">Download Resume</a>
+                </div>
+
+                <!-- CONTACT INFO SECTION -->
+                <div class="contact-info-section">
+                    <h2>Get In Touch</h2>
+                    <p>Feel free to reach out! You can contact me through:</p>
+                    
+                    <!-- EDIT: Add your contact information below -->
+                    <div class="contact-details">
+                        <p><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                        <p><strong>Phone:</strong> <a href="tel:+1234567890">(123) 456-7890</a></p>
+                        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">Your Profile</a></p>
+                        <p><strong>GitHub:</strong> <a href="https://github.com/yourprofile" target="_blank">Your GitHub</a></p>
+                    </div>
+
+                    <!-- Optional: Contact Form -->
+                    <h3>Send Me a Message</h3>
+                    <!-- EDIT: Update form action to your email service (e.g., formspree, netlify forms) -->
+                    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
 

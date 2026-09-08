@@ -47,3 +47,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+/* ===== LIGHTBOX MODAL FUNCTIONS ===== */
+
+// Open lightbox modal with zoomed image and info
+function openModal(galleryItem) {
+    const modal = document.getElementById('lightboxModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    
+    // Get image from gallery item
+    const image = galleryItem.querySelector('img');
+    const artInfo = galleryItem.querySelector('.art-info');
+    
+    // Populate modal with data
+    modalImage.src = image.src;
+    modalImage.alt = image.alt;
+    modalTitle.textContent = artInfo.getAttribute('data-title');
+    modalDescription.textContent = artInfo.getAttribute('data-description');
+    
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+}
+
+// Close lightbox modal
+function closeModal() {
+    const modal = document.getElementById('lightboxModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+}
+
+// Close modal when pressing Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
+});
