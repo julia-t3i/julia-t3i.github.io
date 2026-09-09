@@ -150,7 +150,7 @@ header .navbar {
   border: none;
   cursor: pointer;
   padding: 8px;
-  margin-left: 12px;
+  margin-right: auto;
 }
 .hamburger span {
   display: block;
@@ -177,35 +177,49 @@ header .navbar {
 
 /* Small phones */
 @media (max-width: 480px) {
-  .navbar .menu-links { display: none; }
-  .hamburger { display: inline-block; }
-  .navbar { align-items: center; }
-  .navbar .logo { font-size: 1.6rem; margin-left: -20px; }
-  /* Move content higher and increase text size on small phones */
-  .home { align-items: flex-start; padding: 0px 16px; min-height: 70vh;}
-  .home .max-width { margin: 0px 0 0 40px; text-align: left; }
-  .home .home-content .text-2 { font-size: 3rem; margin-left: -50px; line-height: 1; }
-  .home .home-content .text-3 { font-size: 1.4rem; margin-left: -43px; }
-  .home .home-content .text-1 { margin-left: -40px; margin-top: 350px; }
+  /* BACKGROUND POSITIONING - Change the percentage value to move background left/right */
+  body::before { background-position: 80% center !important; }
+  .projects::before { background-position: 80% center !important; }
+  .portfolio::before { background-position: 80% center !important; }
+  .contact::before { background-position: 80% center !important; }
+  
+  /* MOBILE MENU - Styling for hamburger dropdown menu */
+  .navbar .menu-links { display: none; flex-direction: column; gap: 0px; background-color: rgba(0, 0, 0, 0.45); padding: 15px 0; position: fixed; top: 100px; left: 0; width: 100%; margin: 0; z-index: 1999; border-top: 2px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); }
+  .navbar .menu-links.active { display: flex; animation: slideDown 0.2s ease-out; }
+  .navbar .menu-links li { width: 100%; }
+  .navbar .menu-links a { display: block; padding: 15px 20px; color: #ffffff; text-decoration: none; transition: background-color 0.2s ease; font-size: 1.1rem; }
+  .navbar .menu-links a:hover { background-color: rgba(255, 255, 255, 0.1); }
+  
+  /* HAMBURGER BUTTON - Adjust margin-right to move it left/right */
+  .hamburger { display: inline-block !important; margin-left: auto; padding: 5px; margin-right: 50px; z-index: 2000; background: none; border: none; cursor: pointer; transition: opacity 0.2s ease; }
+  .hamburger:active { opacity: 0.7; }
+  .hamburger span { display: block; width: 25px; height: 3px; background: #ffffff; margin: 5px 0; transition: all 0.3s ease; }
+  .navbar { align-items: center; justify-content: space-between; width: 100%; position: relative; }
+  .navbar .logo { font-size: 1.6rem; margin-left: 10px; }
+  
+  /* HOME SECTION TEXT - Adjust padding-top to move text up/down (first number is top spacing) */
+  .home { align-items: center; padding: 50px 16px 16px 16px; min-height: 100vh; justify-content: flex-start;}
+  .home .max-width { margin: 0; text-align: left; padding-top: 0; }
+  .home .home-content .text-1 { font-size: 18px; margin-left: 0; margin-top: 0; margin-bottom: 10px; }
+  .home .home-content .text-2 { font-size: 3.5rem; margin-left: 0; line-height: 1; margin-bottom: 5px; }
+  .home .home-content .text-3 { font-size: 1.6rem; margin-left: 0; margin-bottom: 20px; }
+  .typing { color: #fccc2d; font-weight: 600; }
   .typing::after { height: 0.95em; top: 4px; }
 
-  /* Shift background to the right so the face is visible on narrow screens */
-  body { background-position: 64% center; }
-
-  /* Mobile menu panel styles */
-  .menu-links {
-    position: absolute;
-    right: 16px;
-    top: 70px;
-    background: rgba(0,0,0,0.7);
-    padding: 12px 18px;
-    border-radius: 8px;
-    flex-direction: column;
-    gap: 12px;
-    display: none;
-    z-index: 999;
+  /* Slide down animation for menu */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
-  .menu-links a { padding: 6px 0; }
+  
+  /* LIGHTBOX CLOSE BUTTON - Adjust right value to move X left/right */
+  .lightbox-close { right: 15px; }
 }
 
 /* Projects Section Styling */
@@ -433,7 +447,7 @@ header .navbar {
   flex-direction: column;
 }
 
-/* Close button */
+/* Close button - Adjust 'right' value to move X left/right on desktop */
 .lightbox-close {
   position: absolute;
   top: 20px;

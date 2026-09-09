@@ -1,32 +1,34 @@
 // Simple typing animation
 document.addEventListener('DOMContentLoaded', function() {
     const element = document.querySelector('.typing');
-    const strings = [' Designer', ' Developer', ' Creator'];
-    let stringIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    
-    function type() {
-        const currentString = strings[stringIndex];
-        const displayText = currentString.substring(0, charIndex);
-        element.textContent = displayText;
+    if (element) {
+        const strings = [' Designer', ' Developer', ' Creator'];
+        let stringIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
         
-        if (!isDeleting && charIndex < currentString.length) {
-            charIndex++;
-            setTimeout(type, 200); // typeSpeed
-        } else if (isDeleting && charIndex > 0) {
-            charIndex--;
-            setTimeout(type, 150); // backSpeed
-        } else {
-            isDeleting = !isDeleting;
-            if (!isDeleting) {
-                stringIndex = (stringIndex + 1) % strings.length;
+        function type() {
+            const currentString = strings[stringIndex];
+            const displayText = currentString.substring(0, charIndex);
+            element.textContent = displayText;
+            
+            if (!isDeleting && charIndex < currentString.length) {
+                charIndex++;
+                setTimeout(type, 200); // typeSpeed
+            } else if (isDeleting && charIndex > 0) {
+                charIndex--;
+                setTimeout(type, 150); // backSpeed
+            } else {
+                isDeleting = !isDeleting;
+                if (!isDeleting) {
+                    stringIndex = (stringIndex + 1) % strings.length;
+                }
+                setTimeout(type, 1600); // backDelay
             }
-            setTimeout(type, 1600); // backDelay
         }
+        
+        type();
     }
-    
-    type();
 
     // Responsive nav toggle
     const hamburger = document.querySelector('.hamburger');
@@ -84,5 +86,4 @@ document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closeModal();
     }
-});
 });
