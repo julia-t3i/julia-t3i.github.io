@@ -4,13 +4,19 @@
 /* <weight>: Use a value from 300 to 700 */
 /* <uniquifier>: Use a unique and descriptive class name */
 
+html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+}
+
 body {
-  font-family: "Quicksand", sans-serif;
-  min-height: 100vh;
-  background-color: #000000;
-  padding-top: 80px;
-  overflow-x: hidden;
-  position: relative;
+    font-family: "Quicksand", sans-serif;
+    min-height: 100vh;
+    background-color: #000000;
+    padding-top: 80px;
+    overflow-x: hidden;
+    position: relative;
+    margin: 0;
 }
 
 /* Apply brightness filter to body/home page background */
@@ -70,14 +76,45 @@ header .navbar {
   color: #fccc2d;
 }
 
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    color: white;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.scroll-indicator .arrow {
+    font-size: 1.5rem;
+    margin-top: 5px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+}
+
 /* Home Section Styling */
 .home {
-  display: flex;
-  /* Reduce section height by header height so layout doesn't jump underneath the fixed nav */
-  height: calc(100vh - 80px);
-  color: #ffffff;
-  min-height: 500px;
-  align-items: center;
+    display: flex;
+    height: calc(100vh - 80px);
+    color: #ffffff;
+    min-height: 500px;
+    align-items: center;
+    scroll-snap-align: start;
+    position: relative;
 }
 
 .home .max-width {
@@ -131,6 +168,50 @@ header .navbar {
   50%, 100% {
     opacity: 0;
   }
+}
+
+/* About Section */
+
+.about {
+    height: calc(100vh - 80px);
+    min-height: 500px;
+    color: white;
+    display: flex;
+    align-items: center;
+    scroll-snap-align: start;
+}
+
+.about .max-width {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 40px 50px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.about-text {
+    text-align: left;
+}
+
+.section-title {
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #fccc2d;
+}
+
+.about-text p {
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 20px;
 }
 
 /* Responsive and navigation styles */
@@ -314,6 +395,39 @@ header .navbar {
       transform: translateY(0);
     }
   }
+  
+    /* ABOUT SECTION */
+
+  .about {
+    height: auto;
+    min-height: 100vh;
+    padding: 80px 16px 40px 16px;
+    box-sizing: border-box;
+    align-items: center;
+  }
+
+  .about .max-width {
+    width: 100%;
+    padding: 0;
+  }
+
+  .about-content {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 25px 20px;
+  }
+
+  .about-text h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
   
   /* LIGHTBOX CLOSE BUTTON - Adjust right value to move X left/right */
   .lightbox-close { right: 15px; }
