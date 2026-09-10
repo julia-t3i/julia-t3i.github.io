@@ -1,28 +1,13 @@
 /* Importing Google font - Quicksand */
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 
-body {
-  font-family: "Quicksand", sans-serif;
-}
-
 /* <weight>: Use a value from 300 to 700 */
 /* <uniquifier>: Use a unique and descriptive class name */
 
-.quicksand-regular {
-  font-family: "Quicksand", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
 body {
-  height: 100vh;
-  background: url("background.png");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
+  font-family: "Quicksand", sans-serif;
+  min-height: 100vh;
   background-color: #000000;
-   /* Add top padding equal to header height so page content appears below the fixed nav */
   padding-top: 80px;
   overflow-x: hidden;
   position: relative;
@@ -32,15 +17,12 @@ body {
 body::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url("background.png");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
+  inset: 0;
+
+  background: url("background.png") center / cover no-repeat;
+
   filter: brightness(0.85);
+
   z-index: -1;
   pointer-events: none;
 }
@@ -100,6 +82,15 @@ header .navbar {
 
 .home .max-width {
   margin: auto 0 auto 40px;
+}
+
+.home .home-content {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 20px 25px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .home .home-content .text-1 {
@@ -178,33 +169,139 @@ header .navbar {
 /* Small phones */
 @media (max-width: 480px) {
   /* BACKGROUND POSITIONING - Change the percentage value to move background left/right */
-  body::before { background-position: 80% center !important; }
-  .projects::before { background-position: 80% center !important; }
-  .portfolio::before { background-position: 80% center !important; }
-  .contact::before { background-position: 80% center !important; }
+  body::before { 
+    background-position: 80% center 
+    !important; 
+  }
+  .projects::before { 
+    background-position: 80% center 
+    !important; 
+  }
+  .portfolio::before { 
+    background-position: 80% center 
+    !important; 
+  }
+  .contact::before { 
+    background-position: 80% center 
+    !important; 
+  }
   
   /* MOBILE MENU - Styling for hamburger dropdown menu */
-  .navbar .menu-links { display: none; flex-direction: column; gap: 0px; background-color: rgba(0, 0, 0, 0.45); padding: 15px 0; position: fixed; top: 100px; left: 0; width: 100%; margin: 0; z-index: 1999; border-top: 2px solid rgba(255, 255, 255, 0.1); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); }
-  .navbar .menu-links.active { display: flex; animation: slideDown 0.2s ease-out; }
-  .navbar .menu-links li { width: 100%; }
-  .navbar .menu-links a { display: block; padding: 15px 20px; color: #ffffff; text-decoration: none; transition: background-color 0.2s ease; font-size: 1.1rem; }
-  .navbar .menu-links a:hover { background-color: rgba(255, 255, 255, 0.1); }
+  .navbar .menu-links { 
+    display: none; 
+    flex-direction: column; 
+    gap: 0px; 
+    background-color: rgba(0, 0, 0, 0.45); 
+    padding: 15px 0; 
+    position: fixed; 
+    top: 75px; 
+    left: 0; 
+    width: 100%; 
+    margin: 0; 
+    z-index: 1999; 
+    border-top: 2px solid rgba(255, 255, 255, 0.1); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  }
+  .navbar .menu-links.active { 
+    display: flex; 
+    animation: slideDown 0.2s ease-out; 
+  }
+  .navbar .menu-links li { 
+    width: 100%; 
+  }
+  .navbar .menu-links a { 
+    display: block; 
+    padding: 15px 20px; 
+    color: #ffffff; 
+    text-decoration: none; 
+    transition: background-color 0.2s ease; 
+    font-size: 1.1rem; 
+  }
+  .navbar .menu-links a:hover { 
+    background-color: rgba(255, 255, 255, 0.1); 
+  }
   
   /* HAMBURGER BUTTON - Adjust margin-right to move it left/right */
-  .hamburger { display: inline-block !important; margin-left: auto; padding: 5px; margin-right: 50px; z-index: 2000; background: none; border: none; cursor: pointer; transition: opacity 0.2s ease; }
-  .hamburger:active { opacity: 0.7; }
-  .hamburger span { display: block; width: 25px; height: 3px; background: #ffffff; margin: 5px 0; transition: all 0.3s ease; }
-  .navbar { align-items: center; justify-content: space-between; width: 100%; position: relative; }
-  .navbar .logo { font-size: 1.6rem; margin-left: 10px; }
+  .hamburger { 
+    display: inline-block 
+    !important; 
+    margin-left: auto; 
+    padding: 5px; 
+    margin-right: 50px; 
+    z-index: 2000; 
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+    transition: opacity 0.2s ease; 
+  }
+  .hamburger:active { 
+    opacity: 0.7; 
+  }
+  .hamburger span { 
+    display: block; 
+    width: 25px; 
+    height: 3px; 
+    background: #ffffff; 
+    margin: 5px 0; 
+    transition: all 0.3s ease; 
+  }
+  .navbar { 
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%; 
+    position: relative; 
+  }
+  .navbar .logo { 
+    font-size: 1.6rem; 
+    margin-left: 10px; 
+  }
   
   /* HOME SECTION TEXT - Adjust padding-top to move text up/down (first number is top spacing) */
-  .home { align-items: center; padding: 50px 16px 16px 16px; min-height: 100vh; justify-content: flex-start;}
-  .home .max-width { margin: 0; text-align: left; padding-top: 0; }
-  .home .home-content .text-1 { font-size: 18px; margin-left: 0; margin-top: 0; margin-bottom: 10px; }
-  .home .home-content .text-2 { font-size: 3.5rem; margin-left: 0; line-height: 1; margin-bottom: 5px; }
-  .home .home-content .text-3 { font-size: 1.6rem; margin-left: 0; margin-bottom: 20px; }
-  .typing { color: #fccc2d; font-weight: 600; }
-  .typing::after { height: 0.95em; top: 4px; }
+  .home { 
+    align-items: center; 
+    padding: 50px 16px 16px 16px; 
+    min-height: 100vh; 
+    justify-content: flex-start;
+  }
+  .home .max-width { 
+    margin: 0; 
+    text-align: left; 
+    padding-top: 0; 
+  }
+
+  .home .home-content {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 20px 25px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+  .home .home-content .text-1 { 
+    font-size: 18px; 
+    margin-left: 0; 
+    margin-top: 0; 
+    margin-bottom: 10px; 
+  }
+  .home .home-content .text-2 { 
+    font-size: 3.5rem; 
+    margin-left: 0; 
+    line-height: 1; 
+    margin-bottom: 5px; 
+  }
+  .home .home-content .text-3 { 
+    font-size: 1.6rem; 
+    margin-left: 0; 
+    margin-bottom: 20px; 
+  }
+  .typing { 
+    color: #fccc2d; 
+    font-weight: 600; 
+  }
+  .typing::after { 
+    height: 0.95em; 
+    top: 4px; 
+  }
 
   /* Slide down animation for menu */
   @keyframes slideDown {
@@ -242,21 +339,22 @@ header .navbar {
   z-index: 1;
 }
 
-/* Fixed red background that stays in place when scrolling - like the PNG does */
-.projects::before {
+/* Shared background for Projects, Portfolio, and Contact */
+.projects::before,
+.portfolio::before,
+.contact::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url("background.png");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
+  inset: 0;
+
+  background: url("background.png") center / cover no-repeat;
+
   filter: blur(3px) brightness(0.5);
+
   z-index: -1;
+  pointer-events: none;
 }
+
 
 .projects h1 {
   font-size: 3rem;
@@ -342,22 +440,6 @@ header .navbar {
   align-items: center;
   justify-content: flex-start;
   z-index: 1;
-}
-
-/* Fixed red background for portfolio (stays in place when scrolling) */
-.portfolio::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url("background.png");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  filter: blur(3px) brightness(0.5);
-  z-index: -1;
 }
 
 .portfolio h1 {
@@ -535,22 +617,6 @@ header .navbar {
   align-items: center;
   justify-content: flex-start;
   z-index: 1;
-}
-
-/* Fixed background for contact page (stays in place when scrolling) */
-.contact::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url("background.png");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  filter: blur(3px) brightness(0.5);
-  z-index: -1;
 }
 
 .contact h1 {
