@@ -50,6 +50,62 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// ===== PORTFOLIO SUBCATEGORY FUNCTIONS =====
+
+// Show selected subcategory
+function showSubcategory(categoryId) {
+    const selectedGallery = document.getElementById(categoryId);
+
+    if (!selectedGallery) {
+        return;
+    }
+
+    // Find the main category that contains this subcategory
+    const selectedCategory = selectedGallery.closest('.portfolio-category');
+
+    // Hide all other main categories
+    document.querySelectorAll('.portfolio-category').forEach(function(category) {
+        if (category !== selectedCategory) {
+            category.style.display = 'none';
+        }
+    });
+
+    // Hide the subcategory boxes
+    const subcategoryGrid = selectedCategory.querySelector('.subcategory-grid');
+
+    if (subcategoryGrid) {
+        subcategoryGrid.style.display = 'none';
+    }
+
+    // Hide all galleries inside this main category
+    selectedCategory.querySelectorAll('.subcategory-gallery').forEach(function(gallery) {
+        gallery.classList.remove('active');
+    });
+
+    // Show the selected gallery
+    selectedGallery.classList.add('active');
+}
+
+
+// Go back to the main portfolio view
+function showCategories(categoryId) {
+
+    // Show all main categories again
+    document.querySelectorAll('.portfolio-category').forEach(function(category) {
+        category.style.display = 'block';
+    });
+
+    // Hide all subcategory galleries
+    document.querySelectorAll('.subcategory-gallery').forEach(function(gallery) {
+        gallery.classList.remove('active');
+    });
+
+    // Show all subcategory boxes again
+    document.querySelectorAll('.subcategory-grid').forEach(function(grid) {
+        grid.style.display = 'grid';
+    });
+}
+
 /* ===== LIGHTBOX MODAL FUNCTIONS ===== */
 
 // Open lightbox modal with zoomed image and info
