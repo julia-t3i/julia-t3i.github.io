@@ -430,7 +430,7 @@ header .navbar {
 
   
   /* LIGHTBOX CLOSE BUTTON - Adjust right value to move X left/right */
-  .lightbox-close { right: 15px; }
+  .lightbox-close { right: 30px; }
 }
 
 /* Projects Section Styling */
@@ -626,6 +626,27 @@ header .navbar {
   display: block;
 }
 
+/* ===== SUBCATEGORY TITLE AND DESCRIPTION ===== */
+
+.subcategory-info {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.subcategory-info h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.subcategory-info p {
+  color: #e0e0e0;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 .back-button {
   background: none;
   border: none;
@@ -721,6 +742,7 @@ header .navbar {
   justify-content: center;
   align-items: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .lightbox-modal.active {
@@ -732,7 +754,7 @@ header .navbar {
 .lightbox-close {
   position: absolute;
   top: 20px;
-  right: 35px;
+  right: 50px;
   color: #ffffff;
   font-size: 40px;
   font-weight: bold;
@@ -772,6 +794,47 @@ header .navbar {
   font-size: 1rem;
   line-height: 1.6;
   color: #e0e0e0;
+}
+
+/* ===== MOBILE LIGHTBOX ===== */
+@media (max-width: 480px) {
+
+  .lightbox-modal {
+    padding: 20px;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .lightbox-close {
+    top: 15px;
+    right: 30px;
+  }
+
+  .lightbox-image {
+    display: block;
+    width: auto;
+    max-width: 90vw;
+    max-height: 60vh;
+    margin: 0 auto 25px auto;
+    object-fit: contain;
+  }
+
+  .lightbox-info {
+    width: 100%;
+    max-width: 90vw;
+    margin: 0 auto;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .lightbox-info h3 {
+    text-align: center;
+  }
+
+  .lightbox-info p {
+    text-align: center;
+  }
 }
 
 /* Responsive adjustments */
